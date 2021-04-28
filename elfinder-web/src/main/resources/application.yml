@@ -1,0 +1,98 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8080
+
+jasypt:
+  encryptor:
+    password: abc
+
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+  resources:
+    static-locations: classpath:static/
+  http:
+    encoding:
+      charset: utf-8
+      force: true
+      enabled: true
+    multipart:
+      enabled: true
+      max-file-size: -1
+
+#file-manager:
+#  thumbnail:
+#    width: 80 # 缩略图宽
+#  volumes:
+#  - Node:
+#    source: fileSystem # 暂时只支持本地文件系统
+#    alias: 测试目录 # 目录别名
+#    path: /Users/guanbinbin # 映射目录
+#    isDefault: true # 是否默认打开
+#    locale:
+#    constraint:
+#      locked: false # 文件夹是否锁定
+#      readable: true # 是否可读
+#      writable: true # 是否可写
+#  - Node:
+#    source: aliyunoss # 暂时只支持本地文件系统
+#    alias: 阿里云 # 目录别名
+#    path: moore-test1 #bucketName
+#    isDefault: false # 是否默认打开
+#    locale:
+#    constraint:
+#      locked: false # 文件夹是否锁定
+#      readable: true # 是否可读
+#      writable: true # 是否可写
+#    aliyunDriverConfig:
+#      endpoint: "oss-cn-beijing.aliyuncs.com"
+#      #bindedDomain: "cdn-bk1.origocoffee.com"
+#      accessKeyId: ENC(******)
+#      accessKeySecret: ENC(******)
+file-manager:
+  thumbnail:
+    width: 80
+  volumes:
+#    - Node:
+#      source: fileSystem
+#      alias: 测试目录
+#      path: /Users/guanbinbin/Downloads/WorkSpace/learn
+#      isDefault: true
+#      locale:
+#      constraint:
+#        locked: false
+#        readable: true
+#        writable: true
+    - Node:
+      source: sftpFileSystem
+      alias: 测试目录
+      path: /root
+      isDefault: true
+      locale:
+      constraint:
+        locked: false
+        readable: true
+        writable: true
+      sftpDriverConfig:
+        ip: 192.168.86.60
+        userName: root
+        password: Passw0rd
+        port: 22
+#    - Node:
+#      source: aliyunoss
+#      alias: 阿里云
+#      path: moore-test1
+#      isDefault: false
+#      locale:
+#      constraint:
+#        locked: false # 文件夹是否锁定
+#        readable: true # 是否可读
+#        writable: true # 是否可写
+#      aliyunDriverConfig:
+#        endpoint: "oss-cn-beijing.aliyuncs.com"
+#        #bindedDomain: "cdn-bk1.origocoffee.com"
+#        accessKeyId: ENC(******)
+#        accessKeySecret: ENC(******)
